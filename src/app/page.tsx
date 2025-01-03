@@ -20,14 +20,24 @@ export default function Home() {
 		<div className="relative m-4 min-h-screen">
 			<header className="card container mx-auto flex w-full items-center justify-between">
 				<div className="container mx-auto flex items-center justify-between">
-					<h1 className="text-2xl font-semibold">Hello World!</h1>
+					<h1 className="font-semibold">Hello World!</h1>
 
-					<div className="flex flex-row gap-2">
-						<div className="size-10 rounded-lg bg-chart-1" />
-						<div className="size-10 rounded-lg bg-chart-2" />
-						<div className="size-10 rounded-lg bg-chart-3" />
-						<div className="size-10 rounded-lg bg-chart-4" />
-						<div className="size-10 rounded-lg bg-chart-5" />
+					<div className="flex flex-row gap-8">
+						<div className="flex flex-row gap-2">
+							<div className="size-10 rounded-lg bg-primary" />
+							<div className="size-10 rounded-lg bg-secondary" />
+							<div className="size-10 rounded-lg bg-accent" />
+							<div className="size-10 rounded-lg bg-muted" />
+							<div className="bg-danger size-10 rounded-lg" />
+							<div className="size-10 rounded-lg bg-success" />
+						</div>
+						<div className="flex flex-row gap-2">
+							<div className="size-10 rounded-lg bg-chart-1" />
+							<div className="size-10 rounded-lg bg-chart-2" />
+							<div className="size-10 rounded-lg bg-chart-3" />
+							<div className="size-10 rounded-lg bg-chart-4" />
+							<div className="size-10 rounded-lg bg-chart-5" />
+						</div>
 					</div>
 				</div>
 			</header>

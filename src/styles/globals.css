@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Base layer for custom theme variables */
 @layer base {
 	:root {
 		--background: #f7f3f7;
@@ -14,7 +15,7 @@
 		--popover-foreground: #1e1e1e;
 
 		--primary: #39496d;
-		--primary-foreground: #ffffff;
+		--primary-foreground: #f7f3f7;
 
 		--secondary: #50a6b9;
 		--secondary-foreground: #1e1e1e;
@@ -25,8 +26,8 @@
 		--muted: #e0e0e0;
 		--muted-foreground: #616161;
 
-		--destructive: #b00020;
-		--destructive-foreground: #ffffff;
+		--danger: #b0001d;
+		--success: #00b05e;
 
 		--border: #e0e0e0;
 		--input: #ffffff;
@@ -50,7 +51,7 @@
 		--popover-foreground: #f7f3f7;
 
 		--primary: #39496d;
-		--primary-foreground: #1e1e1e;
+		--primary-foreground: #f7f3f7;
 
 		--secondary: #50a6b9;
 		--secondary-foreground: #1e1e1e;
@@ -61,8 +62,8 @@
 		--muted: #3a3a3a;
 		--muted-foreground: #a8a8a8;
 
-		--destructive: #9d2a26;
-		--destructive-foreground: #1e1e1e;
+		--danger: #9d2a26;
+		--success: #269d54;
 
 		--border: #3a3a3a;
 		--input: #2c2c2c;
@@ -76,6 +77,7 @@
 	}
 }
 
+/* Components layer for matching background and foreground colors */
 @layer components {
 	.bg-primary {
 		background-color: var(--primary);
@@ -87,31 +89,76 @@
 		color: var(--secondary-foreground);
 	}
 
-	.bg-muted {
-		background-color: var(--muted);
-		color: var(--muted-foreground);
-	}
-
 	.bg-accent {
 		background-color: var(--accent);
 		color: var(--accent-foreground);
 	}
 
-	.bg-destructive {
-		background-color: var(--destructive);
-		color: var(--destructive-foreground);
+	.bg-muted {
+		background-color: var(--muted);
+		color: var(--muted-foreground);
+	}
+
+	.bg-danger {
+		background-color: var(--danger);
+		color: var(--accent-foreground);
+	}
+
+	.bg-success {
+		background-color: var(--success);
+		color: var(--accent-foreground);
 	}
 }
 
+/* General body styling */
 body {
 	background-color: var(--background);
 	color: var(--foreground);
 }
 
+/* Styling for horizontal rules */
 hr {
 	border-color: var(--border);
 }
 
+/* Header element font sizes and line heights */
+h1 {
+	font-size: 2rem;
+	line-height: 2.5rem;
+	font-weight: 700;
+}
+
+h2 {
+	font-size: 1.5rem;
+	line-height: 2rem;
+	font-weight: 700;
+}
+
+h3 {
+	font-size: 1.25rem;
+	line-height: 1.75rem;
+	font-weight: 600;
+}
+
+h4 {
+	font-size: 1rem;
+	line-height: 1.5rem;
+	font-weight: 600;
+}
+
+h5 {
+	font-size: 0.875rem;
+	line-height: 1.25rem;
+	font-weight: 600;
+}
+
+h6 {
+	font-size: 0.75rem;
+	line-height: 1rem;
+	font-weight: 600;
+}
+
+/* Card and popover styles */
 .card {
 	background-color: var(--card);
 	color: var(--card-foreground);
@@ -132,6 +179,7 @@ hr {
 	opacity: 60;
 }
 
+/* Button class styles */
 .btn {
 	display: flex;
 	flex-direction: row;
@@ -143,20 +191,9 @@ hr {
 	border-width: 1px;
 	border-color: var(--border);
 	font-weight: 600;
+	white-space: nowrap;
 }
 
 .btn:hover {
 	opacity: 0.8;
-}
-
-.title {
-	font-size: 1.5rem;
-	line-height: 2rem;
-	font-weight: 700;
-}
-
-.subtitle {
-	font-size: 1.25rem;
-	line-height: 1.75rem;
-	font-weight: 600;
 }
