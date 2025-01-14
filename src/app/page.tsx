@@ -9,6 +9,20 @@ const getMessage = async () => {
 	return response.json()
 }
 
+const technologies = [
+	{ name: "Next.js", description: "with App Router" },
+	{ name: "TypeScript", description: "" },
+	{ name: "Tailwind CSS", description: "" },
+	{ name: "Zustand", description: "support for global state management" },
+	{ name: "React Hook Form", description: "support for form management" },
+	{ name: "Zod", description: "support for form validation" },
+	{ name: "React Query", description: "support for data fetching" },
+	{ name: "NextAuth.js", description: "for authentication, with Google & GitHub providers" },
+	{ name: "Prisma", description: "ORM for database management" },
+	{ name: "Vitest", description: "for unit & integration testing" },
+	{ name: "Playwright", description: "for end-to-end testing" }
+]
+
 export default function Home() {
 	const { data, refetch } = useQuery({
 		queryKey: ["get-message"],
@@ -17,18 +31,18 @@ export default function Home() {
 	})
 
 	return (
-		<div className="relative m-4 min-h-screen">
+		<div className="relative m-4 min-h-screen overflow-x-hidden">
 			<header className="card container mx-auto flex w-full items-center justify-between">
 				<div className="container mx-auto flex items-center justify-between">
 					<h1 className="font-semibold">Hello World!</h1>
 
-					<div className="flex flex-row gap-8">
+					<div className="flex flex-row gap-8 overflow-x-auto">
 						<div className="flex flex-row gap-2">
 							<div className="size-10 rounded-lg bg-primary" />
 							<div className="size-10 rounded-lg bg-secondary" />
 							<div className="size-10 rounded-lg bg-accent" />
 							<div className="size-10 rounded-lg bg-muted" />
-							<div className="bg-danger size-10 rounded-lg" />
+							<div className="size-10 rounded-lg bg-danger" />
 							<div className="size-10 rounded-lg bg-success" />
 						</div>
 						<div className="flex flex-row gap-2">
@@ -41,43 +55,22 @@ export default function Home() {
 					</div>
 				</div>
 			</header>
-
 			<hr className="my-6 w-full" />
-
 			<main className="container mx-auto my-4 flex flex-col items-start justify-center">
 				<p className="text-base font-normal text-muted-foreground">
 					This is a demo of my{" "}
 					<Link href="https://github.com/matimortari/nextjs-boilerplate" className="font-semibold text-foreground">
 						Next.js boilerplate{" "}
 					</Link>
-					for building a full-stack web application using Next.js, TypeScript, Tailwind CSS, and more. It includes:
+					for building a full-stack web application. It includes:
 				</p>
 
 				<ul className="mt-4 list-inside list-disc text-base font-normal text-muted-foreground">
-					<li>
-						<strong>Next.js</strong> with App Router.
-					</li>
-					<li>
-						<strong>TypeScript</strong>.
-					</li>
-					<li>
-						<strong>Tailwind CSS</strong>.
-					</li>
-					<li>
-						<strong>React Query</strong> integration for data fetching.
-					</li>
-					<li>
-						<strong>NextAuth.js</strong> for authentication, with Google & GitHub providers.
-					</li>
-					<li>
-						<strong>Prisma</strong> ORM for database management.
-					</li>
-					<li>
-						<strong>Vitest</strong> for unit & integration testing.
-					</li>
-					<li>
-						<strong>Playwright</strong> for end-to-end testing.
-					</li>
+					{technologies.map((tech, index) => (
+						<li key={index}>
+							<strong>{tech.name}</strong> {tech.description}
+						</li>
+					))}
 				</ul>
 
 				<div className="relative mt-4 flex w-full flex-row items-center gap-4">

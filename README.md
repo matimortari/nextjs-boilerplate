@@ -1,13 +1,16 @@
 # Next.js Boilerplate 🚀
 
-A boilerplate for building a full-stack web application using Next.js, TypeScript, Tailwind CSS, and more.
+A boilerplate & starter setup for a full-stack web application with the best the **React** & **Next.js** ecosystems have to offer. Built with modern tools and best practices to help you get up and running quickly.
 
 ## 📦 Key Features
 
 - **Next.js** with App Router.
 - **TypeScript**.
 - **Tailwind CSS**.
-- **React Query** integration for data fetching.
+- **Zustand** support for global state management.
+- **React Query** support for data fetching.
+- **React Hook Form** support for form management.
+- **Zod** support for form validation.
 - **NextAuth.js** for authentication, with Google & GitHub providers.
 - **Prisma** ORM for database management.
 - **Vitest** for unit & integration testing.
