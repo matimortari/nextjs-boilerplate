@@ -1,93 +1,101 @@
 "use client"
 
-import { useQuery } from "@tanstack/react-query"
+import { Icon } from "@iconify/react"
 import Link from "next/link"
 
-const getMessage = async () => {
-	const response = await fetch("/api/hello")
-	if (!response.ok) throw new Error("Failed to fetch data")
-	return response.json()
-}
-
-const technologies = [
-	{ name: "Next.js", description: "with App Router" },
-	{ name: "TypeScript", description: "" },
-	{ name: "Tailwind CSS", description: "" },
-	{ name: "Zustand", description: "support for global state management" },
-	{ name: "React Hook Form", description: "support for form management" },
-	{ name: "Zod", description: "support for form validation" },
-	{ name: "React Query", description: "support for data fetching" },
-	{ name: "NextAuth.js", description: "for authentication, with Google & GitHub providers" },
-	{ name: "Prisma", description: "ORM for database management" },
-	{ name: "Vitest", description: "for unit & integration testing" },
-	{ name: "Playwright", description: "for end-to-end testing" }
+const features = [
+	{
+		name: "Free & Open Source",
+		description: "This boilerplate is free to use & open source. Feel free to contribute & help me improve it!",
+		icon: "mdi:code"
+	},
+	{
+		name: "Modern React Stack",
+		description:
+			"Explore the latest tools & libraries for the Next.js & React ecosystem. Fetch data with React Query, manage global state with Zustand, and handle forms with React Hook Form & Zod.",
+		icon: "mdi:console"
+	},
+	{
+		name: "API & Database",
+		description:
+			"Build a RESTful API with Prisma for database management. Also includes authentication with NextAuth.js, ready to use with Google & GitHub providers.",
+		icon: "mdi:database-cog"
+	},
+	{
+		name: "Rapid Styling",
+		description:
+			"Take advantage of Tailwind CSS (integrated with ESLint) & PostCSS for easy CSS styling. Also comes with a bunch of global styles & a theme switcher.",
+		icon: "mdi:palette-advanced"
+	},
+	{
+		name: "Code Quality",
+		description: "TypeScript & ESLint ensure code quality & consistency with type checking & linting.",
+		icon: "mdi:bug-check-outline"
+	},
+	{
+		name: "Modern Testing Suite",
+		description:
+			"Test your application with Vitest, along with React Testing Library for unit & integration testing, and Playwright for end-to-end testing.",
+		icon: "mdi:test-tube"
+	}
 ]
 
 export default function Home() {
-	const { data, refetch } = useQuery({
-		queryKey: ["get-message"],
-		queryFn: getMessage,
-		enabled: false
-	})
-
 	return (
 		<div className="relative m-4 min-h-screen overflow-x-hidden">
-			<header className="card container mx-auto flex w-full items-center justify-between">
-				<div className="container mx-auto flex items-center justify-between">
-					<h1 className="font-semibold">Hello World!</h1>
+			<header className="card flex w-full items-center justify-between">
+				<div className="flex flex-row items-center space-x-6">
+					<h2 className="font-bold">Hello World!</h2>
+					<p className="text-sm font-normal text-muted-foreground">
+						This is a demo of my{" "}
+						<Link href="https://github.com/matimortari/nextjs-boilerplate" className="font-semibold text-foreground">
+							Next.js boilerplate{" "}
+						</Link>
+						for building a full-stack web application.
+					</p>
+				</div>
 
-					<div className="flex flex-row gap-8 overflow-x-auto">
-						<div className="flex flex-row gap-2">
-							<div className="size-10 rounded-lg bg-primary" />
-							<div className="size-10 rounded-lg bg-secondary" />
-							<div className="size-10 rounded-lg bg-accent" />
-							<div className="size-10 rounded-lg bg-muted" />
-							<div className="size-10 rounded-lg bg-danger" />
-							<div className="size-10 rounded-lg bg-success" />
-						</div>
-						<div className="flex flex-row gap-2">
-							<div className="size-10 rounded-lg bg-chart-1" />
-							<div className="size-10 rounded-lg bg-chart-2" />
-							<div className="size-10 rounded-lg bg-chart-3" />
-							<div className="size-10 rounded-lg bg-chart-4" />
-							<div className="size-10 rounded-lg bg-chart-5" />
-						</div>
+				<div className="flex flex-row gap-6 overflow-x-auto">
+					<div className="flex flex-row gap-1">
+						<div className="size-6 rounded-lg bg-primary" />
+						<div className="size-6 rounded-lg bg-secondary" />
+						<div className="size-6 rounded-lg bg-accent" />
+						<div className="size-6 rounded-lg bg-muted" />
+						<div className="size-6 rounded-lg bg-danger" />
+						<div className="size-6 rounded-lg bg-success" />
+					</div>
+					<div className="flex flex-row gap-1">
+						<div className="size-6 rounded-lg bg-chart-1" />
+						<div className="size-6 rounded-lg bg-chart-2" />
+						<div className="size-6 rounded-lg bg-chart-3" />
+						<div className="size-6 rounded-lg bg-chart-4" />
+						<div className="size-6 rounded-lg bg-chart-5" />
 					</div>
 				</div>
 			</header>
-			<hr className="my-6 w-full" />
-			<main className="container mx-auto my-4 flex flex-col items-start justify-center">
-				<p className="text-base font-normal text-muted-foreground">
-					This is a demo of my{" "}
-					<Link href="https://github.com/matimortari/nextjs-boilerplate" className="font-semibold text-foreground">
-						Next.js boilerplate{" "}
-					</Link>
-					for building a full-stack web application. It includes:
-				</p>
 
-				<ul className="mt-4 list-inside list-disc text-base font-normal text-muted-foreground">
-					{technologies.map((tech, index) => (
-						<li key={index}>
-							<strong>{tech.name}</strong> {tech.description}
+			<hr className="my-4 w-full" />
+
+			<main className="container mx-auto flex flex-col items-center justify-center">
+				<h4 className="mb-4 font-bold">Features</h4>
+
+				<ul className="mx-12 grid grid-cols-2 gap-4 md:grid-cols-3">
+					{features.map((feature, index) => (
+						<li key={index} className="popover">
+							<div className="flex flex-row items-center gap-2">
+								<span className="icon gradient-chart rounded-full bg-muted p-2">
+									{feature.icon && <Icon icon={feature.icon} className="size-8 text-white" />}
+								</span>
+								<h4>{feature.name}</h4>
+							</div>
+							<hr className="my-2 w-6/12 border-dashed" />
+							<p className="text-sm">{feature.description}</p>
 						</li>
 					))}
 				</ul>
-
-				<div className="relative mt-4 flex w-full flex-row items-center gap-4">
-					<button className="btn" onClick={() => refetch()}>
-						Test Data Fetching
-					</button>
-					<button className="btn" onClick={undefined}>
-						Get Session Data
-					</button>
-
-					{data?.message && (
-						<div className="popover absolute bottom-0 right-0">
-							<strong>{data.message}</strong>
-						</div>
-					)}
-				</div>
 			</main>
+
+			<hr className="my-4 w-full" />
 		</div>
 	)
 }

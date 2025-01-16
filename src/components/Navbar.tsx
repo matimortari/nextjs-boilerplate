@@ -5,45 +5,57 @@ import { signOut, useSession } from "next-auth/react"
 import { useTheme } from "next-themes"
 import Image from "next/image"
 import Link from "next/link"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 export default function Navbar() {
-	const [isOpen, setIsOpen] = useState(false)
-	const [userMenuOpen, setUserMenuOpen] = useState(false)
 	const { data: session } = useSession()
 	const { theme, setTheme } = useTheme()
+	const [isOpen, setIsOpen] = useState(false)
+	const [userMenuOpen, setUserMenuOpen] = useState(false)
+	const userMenuRef = useRef<HTMLDivElement>(null)
 
 	const handleThemeToggle = () => {
 		setTheme(theme === "light" ? "dark" : "light")
 	}
 
 	const navLinks = [
-		{ href: "/", label: "Home" },
-		{ href: "/about", label: "About" },
-		{ href: "/contact", label: "Contact" }
+		{ href: "/", label: "About" },
+		{ href: "https://github.com/matimortari/nextjs-boilerplate", label: "GitHub" }
 	]
+
+	useEffect(() => {
+		const handleClickOutside = (e: MouseEvent) => {
+			if (userMenuRef.current && !userMenuRef.current.contains(e.target as Node)) {
+				setUserMenuOpen(false)
+			}
+		}
+
+		document.addEventListener("mousedown", handleClickOutside)
+
+		return () => {
+			document.removeEventListener("mousedown", handleClickOutside)
+		}
+	}, [])
 
 	return (
 		<nav className="border-b shadow-lg">
 			<div className="mx-auto flex h-16 flex-row items-center justify-between px-4">
 				<div className="flex flex-row items-center space-x-2">
-					<Image src="/logo.png" alt="Logo" width={30} height={30} />
 					<Link href="/" className="whitespace-nowrap text-lg font-bold">
-						Next.js Boilerplate
+						<Image src="/logo.png" alt="Logo" width={30} height={30} />
 					</Link>
-				</div>
 
-				{/* Desktop Menu */}
-				<div className="hidden space-x-4 md:flex md:flex-row md:items-center">
-					{navLinks.map((link) => (
-						<Link key={link.label} href={link.href} className="btn">
-							{link.label}
-						</Link>
-					))}
+					<div className="hidden flex-row items-center space-x-2 md:flex">
+						{navLinks.map((link) => (
+							<Link key={link.label} href={link.href} className="btn bg-card">
+								{link.label}
+							</Link>
+						))}
+					</div>
 				</div>
 
 				<div className="flex flex-row items-center space-x-2">
-					<button onClick={handleThemeToggle} className="btn size-8">
+					<button onClick={handleThemeToggle} className="btn size-8 bg-card">
 						<Icon
 							icon={theme === "light" ? "material-symbols:light-mode-rounded" : "material-symbols:dark-mode-rounded"}
 						/>
@@ -51,7 +63,7 @@ export default function Navbar() {
 
 					{/* Mobile Menu Button */}
 					<div className="md:hidden">
-						<button onClick={() => setIsOpen(!isOpen)} className="btn size-8">
+						<button onClick={() => setIsOpen(!isOpen)} className="btn size-8 bg-card">
 							<Icon icon="bi:menu-button-wide" />
 						</button>
 					</div>
@@ -70,15 +82,15 @@ export default function Navbar() {
 
 								{/* User Dropdown Menu */}
 								{userMenuOpen && (
-									<div className="popover absolute right-0 z-10 mt-2 w-28">
+									<div ref={userMenuRef} className="popover absolute right-0 z-10 mt-2 w-28">
 										<div className="flex flex-col space-y-2 text-start text-sm font-medium">
-											<Link href="/profile" className="btn block hover:bg-muted">
+											<Link href="/profile" className="btn block bg-card hover:bg-muted">
 												Profile
 											</Link>
-											<Link href="/settings" className="btn block hover:bg-muted">
+											<Link href="/settings" className="btn block bg-card hover:bg-muted">
 												Settings
 											</Link>
-											<button onClick={() => signOut()} className="btn block text-start hover:bg-muted">
+											<button onClick={() => signOut()} className="btn block bg-card text-start hover:bg-muted">
 												Sign Out
 											</button>
 										</div>
