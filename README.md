@@ -1,30 +1,30 @@
 # Next.js Boilerplate 🚀
 
-A boilerplate & starter setup for a full-stack web application with the best the **React** & **Next.js** ecosystems have to offer. Built with modern tools and best practices to help you get up and running quickly.
+A boilerplate and starter setup for a full-stack web application with the best the **React** & **Next.js** ecosystems have to offer. Built with modern tools and best practices to help you get up and running quickly.
 
 ## 📦 Key Features
 
-- **Next.js** with App Router.
-- **TypeScript**.
+- **Next.js 14** with App Router and **React 18**.
+- **TypeScript 5**.
 - **Tailwind CSS**.
 - **Zustand** support for global state management.
 - **React Query** support for data fetching.
-- **React Hook Form** support for form management.
-- **Zod** support for form validation.
-- **NextAuth.js** for authentication, with Google & GitHub providers.
+- **React Hook Form** & **Zod** support for form management and validation.
+- **Auth.js** for authentication, with Google & GitHub providers.
 - **Prisma** ORM for database management.
+- **ESLint 9**.
 - **Vitest** for unit & integration testing.
 - **Playwright** for end-to-end testing.
 
 ## 🏁 Getting Started
 
-- Clone the repository:
+- Clone this repository:
 
   ```bash
   git clone https://github.com/matimortari/boilerplate-nextjs .
   ```
 
-- Install necessary dependencies:
+- Install dependencies:
 
   ```bash
   npm install
@@ -45,7 +45,7 @@ A boilerplate & starter setup for a full-stack web application with the best the
 
 ## 🧪 Testing & Coverage
 
-- Run the following command to run unit & integration tests with **Vitest**:
+- Run the following command to run unit and integration tests with **Vitest**:
 
   ```bash
   npm run test
