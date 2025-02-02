@@ -22,7 +22,7 @@ export default function Navbar() {
 
 	const navLinks = [
 		{ href: "/", label: "About" },
-		{ href: "https://github.com/matimortari/nextjs-boilerplate", label: "GitHub" }
+		{ href: "https://github.com/matimortari/nextjs-boilerplate", label: "Source" }
 	]
 
 	useEffect(() => {

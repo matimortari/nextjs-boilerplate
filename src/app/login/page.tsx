@@ -20,11 +20,11 @@ export default function Login() {
 				<hr className="my-6 w-full" />
 
 				<div className="my-4 flex flex-col items-center justify-center gap-4">
-					<button className="btn bg-google text-white" onClick={() => signIn("google")}>
+					<button className="btn bg-[#db4437] text-white" onClick={() => signIn("google")}>
 						<Icon icon="simple-icons:google" className="icon" />
 						Sign In With Google
 					</button>
-					<button className="btn bg-github text-white" onClick={() => signIn("github")}>
+					<button className="btn bg-[#333333] text-white" onClick={() => signIn("github")}>
 						<Icon icon="simple-icons:github" className="icon" />
 						Sign In With GitHub
 					</button>
