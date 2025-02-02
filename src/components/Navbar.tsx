@@ -10,9 +10,11 @@ import { useEffect, useRef, useState } from "react"
 export default function Navbar() {
 	const { data: session } = useSession()
 	const { theme, setTheme } = useTheme()
+
+	const userMenuRef = useRef<HTMLDivElement>(null)
+
 	const [isOpen, setIsOpen] = useState(false)
 	const [userMenuOpen, setUserMenuOpen] = useState(false)
-	const userMenuRef = useRef<HTMLDivElement>(null)
 
 	const handleThemeToggle = () => {
 		setTheme(theme === "light" ? "dark" : "light")
@@ -61,14 +63,14 @@ export default function Navbar() {
 						/>
 					</button>
 
-					{/* Mobile Menu Button */}
+					{/* Mobile menu button */}
 					<div className="md:hidden">
 						<button onClick={() => setIsOpen(!isOpen)} className="btn size-8 bg-card">
 							<Icon icon="bi:menu-button-wide" />
 						</button>
 					</div>
 
-					{session && session.user.name && session.user.image ? (
+					{session?.user?.name && session?.user?.image ? (
 						<div className="flex flex-row items-center space-x-2">
 							<div className="relative">
 								<Image
@@ -80,7 +82,7 @@ export default function Navbar() {
 									onClick={() => setUserMenuOpen(!userMenuOpen)}
 								/>
 
-								{/* User Dropdown Menu */}
+								{/* User dropdown menu */}
 								{userMenuOpen && (
 									<div ref={userMenuRef} className="popover absolute right-0 z-10 mt-2 w-28">
 										<div className="flex flex-col space-y-2 text-start text-sm font-medium">
@@ -106,7 +108,7 @@ export default function Navbar() {
 				</div>
 			</div>
 
-			{/* Mobile Menu */}
+			{/* Mobile menu */}
 			{isOpen && (
 				<div className="md:hidden">
 					<div className="space-y-2 border-t p-4 shadow-md">
