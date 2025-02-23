@@ -1,4 +1,7 @@
+"use client"
+
 import { Icon } from "@iconify/react"
+import { createAuthClient } from "better-auth/react"
 import Link from "next/link"
 
 const features = [
@@ -46,13 +49,18 @@ const features = [
 	}
 ]
 
+const { useSession } = createAuthClient()
+
 export default function Home() {
+	const { data } = useSession()
+
 	return (
 		<div className="relative m-8 min-h-screen overflow-x-hidden">
 			<header className="card flex w-full items-center justify-between">
 				<div className="flex flex-row items-center space-x-6">
 					<h2 className="font-bold">Hello World!</h2>
 					<p className="text-sm font-normal text-muted-foreground">
+						Welcome {data?.user?.name}
 						This is a demo of my{" "}
 						<Link href="https://github.com/matimortari/nextjs-boilerplate" className="font-bold">
 							Next.js boilerplate{" "}
