@@ -1,13 +1,13 @@
 "use client"
 
+import { authClient } from "@/src/lib/auth/client"
 import { Icon } from "@iconify/react"
-import { signIn, useSession } from "next-auth/react"
 import { redirect } from "next/navigation"
 
 export default function Login() {
-	const { status } = useSession()
+	const { data } = authClient.useSession()
 
-	if (status === "authenticated") {
+	if (data?.session) {
 		redirect("/")
 	}
 
@@ -20,11 +20,21 @@ export default function Login() {
 				<hr className="my-8 w-full" />
 
 				<div className="flex flex-col items-center justify-center gap-4">
-					<button onClick={() => signIn("google")} className="btn bg-[#db4437] text-white">
+					<button
+						onClick={async () => {
+							await authClient.signIn.social({ provider: "google", callbackURL: "/" })
+						}}
+						className="btn bg-[#db4437] text-white"
+					>
 						<Icon icon="simple-icons:google" width={25} height={25} />
 						Sign In With Google
 					</button>
-					<button onClick={() => signIn("github")} className="btn bg-[#333333] text-white">
+					<button
+						onClick={async () => {
+							await authClient.signIn.social({ provider: "github", callbackURL: "/" })
+						}}
+						className="btn bg-[#333333] text-white"
+					>
 						<Icon icon="simple-icons:github" width={25} height={25} />
 						Sign In With GitHub
 					</button>
