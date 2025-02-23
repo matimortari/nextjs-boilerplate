@@ -1,17 +1,19 @@
 "use client"
 
 import { Icon } from "@iconify/react"
-import { signOut, useSession } from "next-auth/react"
+import { createAuthClient } from "better-auth/react"
 import { useTheme } from "next-themes"
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
+import { authClient } from "../lib/auth/client"
+
+const { useSession } = createAuthClient()
 
 export default function Navbar() {
-	const { data: session } = useSession()
+	const { data } = useSession()
 
 	const { theme, setTheme } = useTheme()
-
 	const userMenuRef = useRef<HTMLDivElement>(null)
 
 	const [isOpen, setIsOpen] = useState(false)
@@ -70,12 +72,12 @@ export default function Navbar() {
 						</button>
 					</div>
 
-					{session?.user?.name && session?.user?.image ? (
+					{data?.user ? (
 						<div className="flex flex-row items-center gap-2">
 							<div className="relative">
 								<Image
-									src={session.user.image}
-									alt={session.user.name}
+									src={data.user.image || "/default-profile.png"}
+									alt={data.user.name}
 									width={35}
 									height={35}
 									className="cursor-pointer rounded-full"
@@ -92,7 +94,13 @@ export default function Navbar() {
 											<Link href="/settings" className="btn block bg-card hover:bg-muted">
 												Settings
 											</Link>
-											<button onClick={() => signOut()} className="btn block bg-card text-start hover:bg-muted">
+											<button
+												onClick={async () => {
+													await authClient.signOut()
+													location.reload()
+												}}
+												className="btn block bg-card text-start hover:bg-muted"
+											>
 												Sign Out
 											</button>
 										</div>
