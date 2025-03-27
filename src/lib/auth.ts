@@ -1,16 +1,8 @@
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
-import { DefaultSession, NextAuthOptions, SessionStrategy } from "next-auth"
+import { NextAuthOptions, SessionStrategy } from "next-auth"
 import GitHubProvider from "next-auth/providers/github"
 import GoogleProvider from "next-auth/providers/google"
-import { db } from "./db"
-
-declare module "next-auth" {
-	interface Session {
-		user: DefaultSession["user"] & {
-			id: string
-		}
-	}
-}
+import { db } from "@/src/lib/db"
 
 export const authOptions: NextAuthOptions = {
 	providers: [
@@ -27,10 +19,5 @@ export const authOptions: NextAuthOptions = {
 	session: {
 		strategy: "database" as SessionStrategy
 	},
-	callbacks: {
-		session: ({ session, user }) => {
-			session.user.id = user.id
-			return session
-		}
-	}
+	callbacks: {}
 }
