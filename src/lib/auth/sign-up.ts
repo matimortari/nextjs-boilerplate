@@ -1,4 +1,4 @@
-import { authClient } from "./auth-client"
+import { authClient } from "@/src/lib/auth/client"
 
 const email = "user@example.com" // replace with actual email
 const password = "password123" // replace with actual password

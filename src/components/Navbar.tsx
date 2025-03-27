@@ -1,12 +1,12 @@
 "use client"
 
+import { authClient } from "@/src/lib/auth/client"
 import { Icon } from "@iconify/react"
 import { createAuthClient } from "better-auth/react"
 import { useTheme } from "next-themes"
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
-import { authClient } from "../lib/auth/client"
 
 const { useSession } = createAuthClient()
 

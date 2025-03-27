@@ -1,10 +1,10 @@
 import Footer from "@/src/components/Footer"
+import Navbar from "@/src/components/Navbar"
+import Providers from "@/src/components/context/Providers"
 import "@/src/styles/globals.css"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { ReactNode } from "react"
-import Navbar from "../components/Navbar"
-import Providers from "../components/context/Providers"
 
 const inter = Inter({ subsets: ["latin"] })
 

@@ -4,14 +4,14 @@ A boilerplate and starter setup for a full-stack web application with the best t
 
 ## 📦 Key Features
 
-- **Next.js 14** with App Router and **React 18**.
-- **TypeScript 5**.
+- **Next.js 15** with App Router & **React 19**.
+- **TypeScript 6**.
 - **Tailwind CSS**.
 - **Zustand** support for global state management.
 - **React Query** support for data fetching.
-- **React Hook Form** & **Zod** support for form management and validation.
-- **Auth.js** for authentication, with Google & GitHub providers.
-- **Prisma** ORM for database management.
+- **React Hook Form** & **Zod** support for form management & validation.
+- **Better Auth** for authentication, with Google & GitHub providers.
+- **Prisma** for database management.
 - **ESLint 9**.
 - **Vitest** for unit & integration testing.
 - **Playwright** for end-to-end testing.
